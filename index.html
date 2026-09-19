@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AIoT Explorer：围绕数据流程整理知识，并提供一条面向 AIoT 的学习路径。">
+  <title>AIoT Explorer | Data Flow Learning Path</title>
+  <style>
+    :root {
+      --ink: #172322;
+      --muted: #61706d;
+      --paper: #f4f0e7;
+      --panel: #fffdf8;
+      --line: #d9ded4;
+      --teal: #176b68;
+      --orange: #d87542;
+      --yellow: #e8bd58;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Aptos", "Microsoft YaHei", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(1080px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      min-height: 620px;
+      padding: 28px 0 64px;
+      background:
+        linear-gradient(135deg, rgba(23, 107, 104, .08), transparent 48%),
+        linear-gradient(315deg, rgba(216, 117, 66, .12), transparent 44%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      font-size: .9rem;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+    }
+
+    .hero {
+      max-width: 900px;
+      padding-top: clamp(72px, 10vh, 120px);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 18px;
+      color: var(--teal);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, p { margin-top: 0; }
+
+    h1 {
+      max-width: 100%;
+      margin-bottom: 20px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.8rem, 7vw, 5.6rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+      font-weight: 500;
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+    }
+
+    .jump {
+      display: inline-block;
+      padding: 11px 18px;
+      color: #fffdf8;
+      background: var(--teal);
+      text-decoration: none;
+      border-radius: 3px;
+      font-weight: 700;
+    }
+
+    section { padding: 82px 0; }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1;
+      font-weight: 500;
+    }
+
+    .section-heading p { max-width: 380px; margin-bottom: 0; color: var(--muted); }
+
+    .path {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .module {
+      min-height: 250px;
+      padding: 24px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--teal);
+    }
+
+    .module:nth-child(2) { border-top-color: var(--orange); }
+    .module:nth-child(3) { border-top-color: var(--yellow); }
+    .module:nth-child(4) { border-top-color: #7c8d6d; }
+    .module:nth-child(n+5) {
+      color: #9a9f9b;
+      background: #f0eee8;
+      border-color: #d7d8d2;
+      border-top-color: #aeb2ac;
+    }
+
+    .module:nth-child(n+5) p,
+    .module:nth-child(n+5) .number { color: #9a9f9b; }
+
+    .number {
+      color: var(--muted);
+      font-size: .85rem;
+      font-weight: 800;
+    }
+
+    .module h3 { margin: 34px 0 10px; font-size: 1.3rem; }
+    .module p { margin-bottom: 0; color: var(--muted); font-size: .95rem; }
+
+    .note {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding: 32px 0 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .note p { color: var(--muted); }
+
+    footer {
+      padding: 24px 0 38px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: .88rem;
+    }
+
+    @media (max-width: 760px) {
+      header { min-height: auto; padding-bottom: 58px; }
+      .hero { padding-top: 72px; }
+      .path, .note { grid-template-columns: 1fr; }
+      .module { min-height: auto; }
+      .section-heading { display: block; }
+      .section-heading p { margin-top: 18px; }
+    }
+
+    @media (min-width: 761px) and (max-width: 960px) {
+      .path { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav aria-label="主导航">
+        <span class="brand">AIoT EXPLORER</span>
+        <a href="#path">学习路径</a>
+      </nav>
+      <div class="hero">
+        <p class="eyebrow">A learning path for AIoT</p>
+        <h1>从数据流程出发，理解<br>AIoT</h1>
+        <p>从传感器信号出发，经过连接、感知与学习，走向真实的 AIoT 应用。</p>
+        <a class="jump" href="#path">查看学习路径</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="path">
+      <div class="wrap">
+        <div class="section-heading">
+          <h2>知识整理与学习路径</h2>
+          <p>AI 协助整理、人工负责方向设定、补充和审核</p>
+        </div>
+        <div class="path">
+          <article class="module">
+            <span class="number">01 / CONNECT</span>
+            <h3>BLE</h3>
+            <p>在发现、广播和连接过程中梳理流程与方法</p>
+          </article>
+          <article class="module">
+            <span class="number">02 / SENSE</span>
+            <h3>Radar</h3>
+            <p>从电磁波到 I/Q 数据，从I/Q变化到目标特征判断</p>
+          </article>
+          <article class="module">
+            <span class="number">03 / MEASURE</span>
+            <h3>ToF</h3>
+            <p>从一束光到距离、从距离到深度图和应用</p>
+          </article>
+          <article class="module">
+            <span class="number">04 / LEARN</span>
+            <h3>ML、TinyML &amp; Edge AI</h3>
+            <p>从数据开始，探索 TinyML、边缘 AI 与 GenAI 的融合应用</p>
+          </article>
+          <article class="module">
+            <span class="number">05 / SENSE</span>
+            <h3>Wi-Fi CSI</h3>
+            <p>从无线信道状态信息出发，了解环境感知与行为识别的数据流程。</p>
+          </article>
+          <article class="module">
+            <span class="number">06 / FOUNDATIONS</span>
+            <h3>Embedded Basics</h3>
+            <p>梳理 MCU、OS、外设、内存和实时性等嵌入式基础知识。</p>
+          </article>
+          <article class="module">
+            <span class="number">07 / FUSION</span>
+            <h3>Sensor Fusion</h3>
+            <p>理解如何结合多个传感器的数据，提高环境感知和判断的可靠性。</p>
+          </article>
+          <article class="module">
+            <span class="number">08 / SECURITY</span>
+            <h3>Security</h3>
+            <p>了解安全启动、设备认证、固件升级和数据保护等基础概念。</p>
+          </article>
+          <article class="module">
+            <span class="number">09 / CONNECT</span>
+            <h3>IoT Connectivity</h3>
+            <p>了解 Wi-Fi、MQTT、Matter，以及 BLE Mesh、Zigbee 等设备互联与 Mesh 网络。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap note">
+        <div>
+          <h2>作为学习入口</h2>
+        </div>
+        <div>
+          <p>面向开发、产品以及希望建立整体认识的学习者。</p>
+          <p>它不追求教材的专业性，也不是术语说明书，而是围绕数据流程整理知识，为进一步的专题学习提供入口。</p>
+          <p>这是一条由 AI 协助整理、人工负责方向设定、补充和审核的学习路径。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">AIoT Explorer · Learning by understanding the flow.</div>
+  </footer>
+</body>
+</html>
