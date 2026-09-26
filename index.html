@@ -139,18 +139,24 @@
       border-top: 5px solid var(--teal);
     }
 
-    .module:nth-child(2) { border-top-color: var(--orange); }
-    .module:nth-child(3) { border-top-color: var(--yellow); }
-    .module:nth-child(4) { border-top-color: #7c8d6d; }
-    .module:nth-child(n+6) {
+    .path > :nth-child(2) .module,
+    .path > .module:nth-child(2) { border-top-color: var(--orange); }
+    .path > :nth-child(3) .module,
+    .path > .module:nth-child(3) { border-top-color: var(--yellow); }
+    .path > :nth-child(4) .module,
+    .path > .module:nth-child(4) { border-top-color: #7c8d6d; }
+    .path > :nth-child(n+6) .module,
+    .path > .module:nth-child(n+6) {
       color: #9a9f9b;
       background: #f0eee8;
       border-color: #d7d8d2;
       border-top-color: #aeb2ac;
     }
 
-    .module:nth-child(n+6) p,
-    .module:nth-child(n+6) .number { color: #9a9f9b; }
+    .path > :nth-child(n+6) .module p,
+    .path > :nth-child(n+6) .module .number,
+    .path > .module:nth-child(n+6) p,
+    .path > .module:nth-child(n+6) .number { color: #9a9f9b; }
 
     .number {
       color: var(--muted);
@@ -225,16 +231,20 @@
               <p>在发现、广播和连接过程中梳理流程与方法</p>
             </article>
           </a>
-          <article class="module">
-            <span class="number">02 / SENSE</span>
-            <h3>Radar</h3>
-            <p>从电磁波到 I/Q 数据，从I/Q变化到目标特征判断</p>
-          </article>
-          <article class="module">
-            <span class="number">03 / MEASURE</span>
-            <h3>ToF</h3>
-            <p>从一束光到距离、从距离到深度图和应用</p>
-          </article>
+          <a class="module-link" href="https://github.com/HelloStart/radar-flow-analyzer">
+            <article class="module">
+              <span class="number">02 / SENSE</span>
+              <h3>Radar</h3>
+              <p>从电磁波到 I/Q 数据，从I/Q变化到目标特征判断</p>
+            </article>
+          </a>
+          <a class="module-link" href="https://github.com/HelloStart/tof-flow">
+            <article class="module">
+              <span class="number">03 / MEASURE</span>
+              <h3>ToF</h3>
+              <p>从一束光到距离、从距离到深度图和应用</p>
+            </article>
+          </a>
           <a class="module-link" href="https://github.com/HelloStart/ml-flow-analyzer">
             <article class="module">
               <span class="number">04 / LEARN</span>
@@ -242,11 +252,13 @@
               <p>从数据开始，探索 TinyML、边缘 AI 与 GenAI 的融合应用</p>
             </article>
           </a>
-          <article class="module">
-            <span class="number">05 / SENSE</span>
-            <h3>Wi-Fi CSI</h3>
-            <p>从无线信道状态信息出发，了解环境感知与行为识别的数据流程。</p>
-          </article>
+          <a class="module-link" href="https://github.com/HelloStart/wfi-csi">
+            <article class="module">
+              <span class="number">05 / SENSE</span>
+              <h3>Wi-Fi CSI</h3>
+              <p>从无线信道状态信息出发，了解环境感知与行为识别的数据流程。</p>
+            </article>
+          </a>
           <article class="module">
             <span class="number">06 / FOUNDATIONS</span>
             <h3>Embedded Basics</h3>
